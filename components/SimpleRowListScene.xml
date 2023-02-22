@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--********** Copyright 2016 Roku Corp.  All Rights Reserved. **********-->
+
+
+<component name="SimpleRowListScene" extends="Scene">
+
+    <script type="text/brightscript">
+        <![CDATA[
+function init()
+    m.theRowList = m.top.FindNode("theRowList")
+    m.theRowList2 = m.top.FindNode("theRowList2")
+
+    m.theRowList.SetFocus(true)
+end function
+
+function onKeyEvent(key as string, press as boolean) as boolean
+   handled = false   
+    if press 
+         if key = "down" 
+              m.theRowList.SetFocus(false)
+              m.theRowList2.SetFocus(true)
+              handled = true
+            else if key = "up" 
+                m.theRowList.SetFocus(true)
+                m.theRowList2.SetFocus(false)
+                handled = true
+        end if
+    end if
+
+    return handled
+end function
+
+]]>
+    </script>
+
+    <children>
+        <SimpleRowList id="theRowList" translation="[50,50]" />
+        <SimpleRowList id="theRowList2" translation="[50,350]" />
+    </children>
+</component>
